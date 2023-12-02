@@ -86,7 +86,7 @@ public class MyCustomCollection<E> implements Iterable<E> {
         }
         System.out.println("size: " + col.size());
 
-        System.out.println("\nItem " + col.get(3) + " was removed.");
+        System.out.println("\nItem [" + col.get(3) + "] was removed.");
         col.remove(3);
 
         System.out.println("\n--- New contents of the collection ---");
