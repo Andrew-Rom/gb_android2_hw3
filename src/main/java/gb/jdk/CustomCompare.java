@@ -2,7 +2,7 @@ package gb.jdk;
 
 import java.util.Arrays;
 
-public class CustomСompare {
+public class CustomCompare {
 
     private static <E> boolean compareArrays(E[] array1, E[] array2) {
         if (array1.length != array2.length) {
@@ -10,7 +10,7 @@ public class CustomСompare {
         }
 
         for (int i = 0; i < array1.length; i++) {
-            if (!array1[i].getClass().getSimpleName().equals(array2[i].getClass().getSimpleName())) {
+            if (!array1[i].getClass().equals(array2[i].getClass())) {
                 return false;
             }
             if (!array1[i].equals(array2[i])) {
@@ -34,35 +34,39 @@ public class CustomСompare {
 
         System.out.println(Arrays.toString(arr1) + "\t"
                 + Arrays.toString(arr2) + "\t"
-                +  CustomСompare.compareArrays(arr1, arr2));
+                +  CustomCompare.compareArrays(arr1, arr2));
 
         System.out.println(Arrays.toString(arr1) + "\t"
                 + Arrays.toString(arr3) + "\t"
-                +  CustomСompare.compareArrays(arr1, arr3));
+                +  CustomCompare.compareArrays(arr1, arr3));
 
         System.out.println(Arrays.toString(arr1) + "\t"
                 + Arrays.toString(arr4) + "\t"
-                +  CustomСompare.compareArrays(arr1, arr4));
+                +  CustomCompare.compareArrays(arr1, arr4));
 
         System.out.println(Arrays.toString(arr4) + "\t"
                 + Arrays.toString(arr5) + "\t"
-                +  CustomСompare.compareArrays(arr4, arr5));
+                +  CustomCompare.compareArrays(arr4, arr5));
 
         System.out.println(Arrays.toString(arr4) + "\t"
                 + Arrays.toString(arr6) + "\t"
-                +  CustomСompare.compareArrays(arr4, arr6));
+                +  CustomCompare.compareArrays(arr4, arr6));
 
         System.out.println(Arrays.toString(arr5) + "\t"
                 + Arrays.toString(arr7) + "\t"
-                +  CustomСompare.compareArrays(arr5, arr7));
+                +  CustomCompare.compareArrays(arr5, arr7));
 
         System.out.println(Arrays.toString(arr7) + "\t"
                 + Arrays.toString(arr8) + "\t"
-                +  CustomСompare.compareArrays(arr7, arr8));
+                +  CustomCompare.compareArrays(arr7, arr8));
 
         System.out.println(Arrays.toString(arr5) + "\t"
                 + Arrays.toString(arr9) + "\t"
-                +  CustomСompare.compareArrays(arr5, arr9));
+                +  CustomCompare.compareArrays(arr5, arr9));
+
+        System.out.println(Arrays.toString(arr4) + "\t"
+                + Arrays.toString(arr9) + "\t"
+                +  CustomCompare.compareArrays(arr4, arr9));
 
     }
 }
