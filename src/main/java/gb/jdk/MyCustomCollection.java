@@ -1,5 +1,6 @@
 package gb.jdk;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class MyCustomCollection<E> implements Iterable<E> {
@@ -35,6 +36,11 @@ public class MyCustomCollection<E> implements Iterable<E> {
         Object[] newArray = new Object[newLength];
         System.arraycopy(array, 0, newArray, 0, pivot);
         array = newArray;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.stream(array).limit(pivot).toList().toString();
     }
 
     class MyIterator implements Iterator<E> {
@@ -79,6 +85,8 @@ public class MyCustomCollection<E> implements Iterable<E> {
         col.add(t2);
         col.add(t3);
         col.add(t4);
+
+        System.out.println(col);
 
         System.out.println("\n--- Contents of the collection ---");
         for (Object item : col) {
