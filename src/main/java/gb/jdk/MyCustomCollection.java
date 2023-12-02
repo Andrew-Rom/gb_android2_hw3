@@ -4,12 +4,13 @@ import java.util.Iterator;
 
 public class MyCustomCollection<E> implements Iterable<E> {
     private final int SIZE = 10;
+    private final int CORRECTOR = 2;
     private Object[] array = new Object[SIZE];
     private int pivot = 0;
 
     public void add(E item) {
         if (pivot == array.length - 1)
-            resize(array.length * 2);
+            resize(array.length * CORRECTOR);
         array[pivot++] = item;
     }
 
@@ -22,8 +23,8 @@ public class MyCustomCollection<E> implements Iterable<E> {
             array[i] = array[i + 1];
         array[pivot] = null;
         pivot--;
-        if (array.length > SIZE && pivot < array.length / 2)
-            resize(array.length / 2);
+        if (array.length > SIZE && pivot < array.length / CORRECTOR)
+            resize(array.length / CORRECTOR);
     }
 
     public int size() {
@@ -36,30 +37,36 @@ public class MyCustomCollection<E> implements Iterable<E> {
         array = newArray;
     }
 
-    @Override
-    public Iterator<E> iterator() {
-        return new Iterator<>() {
+    class MyIterator implements Iterator<E> {
+        private int currentIndex;
 
-            private int currentIndex = 0;
+        public MyIterator() {
+            this.currentIndex = 0;
+        }
 
-            @Override
-            public boolean hasNext() {
-                return currentIndex < size() && array[currentIndex] != null;
-            }
+        @Override
+        public boolean hasNext() {
+            return currentIndex < size() && array[currentIndex] != null;
+        }
 
-            @Override
-            public E next() {
-                return (E) array[currentIndex++];
-            }
+        @Override
+        public E next() {
+            return (E) array[currentIndex++];
+        }
 
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
     }
 
-    // Далее тестирование кода
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
+
+    // Realization below
     public static void main(String[] args) {
         String t1 = "tt1";
         String t2 = "tt2";
