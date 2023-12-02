@@ -72,25 +72,28 @@ public class MyCustomCollection<E> implements Iterable<E> {
         String t2 = "tt2";
         String t3 = "tt3";
         String t4 = "tt4";
-        Integer kk = 55555;
+        Integer kk = 555;
         MyCustomCollection<Object> col = new MyCustomCollection<>();
         col.add(t1);
         col.add(kk);
         col.add(t2);
         col.add(t3);
         col.add(t4);
-        System.out.println(col.get(0));
-        System.out.println(col.get(1));
-        System.out.println(col.get(3));
-        System.out.println(col.size());
-        col.remove(3);
-        System.out.println(col.get(3));
-        System.out.println(col.size());
 
-        System.out.println("--- Iteration ---");
+        System.out.println("\n--- Contents of the collection ---");
         for (Object item : col) {
             System.out.println(item + " " + item.getClass().getSimpleName());
         }
+        System.out.println("size: " + col.size());
+
+        System.out.println("\nItem " + col.get(3) + " was removed.");
+        col.remove(3);
+
+        System.out.println("\n--- New contents of the collection ---");
+        for (Object item : col) {
+            System.out.println(item + " " + item.getClass().getSimpleName());
+        }
+        System.out.println("size: " + col.size());
 
     }
 }
